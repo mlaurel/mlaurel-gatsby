@@ -27,8 +27,8 @@ export default {
             name: 'name',
             vegetarian: 'vegetarian',
         },
-        prepare: (fields) => ({
-            title: `${fields.name} ${fields.vegetarian ? ' 🌱 ' : ' 🍖'}`,
+        prepare: ({ name, vegetarian }) => ({
+            title: `${name} ${vegetarian ? ' 🌱 ' : ' 🍖'}`,
         }),
     },
 };
