@@ -79,5 +79,12 @@ const GlobalStyles = createGlobalStyle`
         position: relative;
         display: inline-block;
     }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    .comma:not(:last-child):after {
+        content: ', ';
+    }
 `
 export default GlobalStyles
