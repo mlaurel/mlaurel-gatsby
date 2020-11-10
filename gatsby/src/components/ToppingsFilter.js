@@ -96,7 +96,6 @@ export default function ToppingsFilter() {
                     </Link>
                 )
             })}
-            <p>Toppings</p>
         </ToppingsStyles>
     )
 }

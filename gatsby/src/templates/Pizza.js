@@ -8,7 +8,7 @@ const PizzaGrid = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 2rem;
     ul {
-        margin-left: 2rem;
+        margin: 2rem 0 0 2rem;
     }
 `
 
@@ -18,7 +18,7 @@ export default function SinglePizzaPage({ data: { pizza } }) {
         <PizzaGrid>
             <Img fluid={pizza.image.asset.fluid} alt={pizza.name} />
             <div>
-                <h2>{pizza.name}</h2>
+                <h2 className="mark">{pizza.name}</h2>
                 <ul>
                     {pizza.toppings.map((topping) => {
                         return <li key={topping.id}>{topping.name}</li>
