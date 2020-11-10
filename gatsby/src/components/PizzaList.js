@@ -58,7 +58,6 @@ function SinglePizza({ pizza }) {
 export default function PizzaList({ pizzas }) {
     return (
         <>
-            <p>There are {pizzas.length} pizzas total!</p>
             <PizzaGridStyles>
                 {pizzas.map((pizza) => {
                     return <SinglePizza key={pizza.id} pizza={pizza} />
