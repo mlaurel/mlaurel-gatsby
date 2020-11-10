@@ -11,16 +11,21 @@ const PizzaHeader = styled.div`
     margin: 2rem 0;
 `
 
-export default function PizzasPage({ data }) {
+export default function PizzasPage({ data, pageContext }) {
     const pizzas = data.pizzas.nodes
+    const toppingTitle = pageContext.topping
 
     return (
         <>
             <PizzaHeader>
-                <h1>Pizzas</h1>
+                {toppingTitle ? (
+                    <h1>{pageContext.topping}</h1>
+                ) : (
+                    <h1>All Pizzas</h1>
+                )}
                 <div>{pizzas.length} total pizzas</div>
             </PizzaHeader>
-            <ToppingsFilter />
+            <ToppingsFilter activeTopping={pageContext.topping} />
             <PizzaList pizzas={pizzas} />
         </>
     )
