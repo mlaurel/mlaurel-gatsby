@@ -8,7 +8,7 @@ const PizzaHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem 0;
+    margin: 0 0 4rem;
 `
 
 export default function PizzasPage({ data, pageContext }) {

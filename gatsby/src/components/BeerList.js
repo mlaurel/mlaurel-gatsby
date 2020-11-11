@@ -31,11 +31,36 @@ const BeerStyles = styled.li`
         background-color: #fff;
         padding: 2rem;
         border-radius: 8px;
+        img {
+            object-fit: contain;
+        }
     }
 `
 
+const RatingStyles = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 0;
+`
+
+function BeerRating({ rating }) {
+    console.log({ rating })
+    const stars = Math.round(rating.average)
+
+    return (
+        <RatingStyles>
+            <p title={`${stars} out of 5 stars`}>
+                {`⭐`.repeat(stars)}
+                <span style={{ filter: `grayscale(100%)` }}>
+                    {`⭐`.repeat(5 - stars)}
+                </span>
+            </p>
+            <h4>{rating.reviews} reviews</h4>
+        </RatingStyles>
+    )
+}
+
 function SingleBeer({ beer }) {
-    console.log(beer)
     return (
         <BeerStyles>
             <h2>{beer.name}</h2>
@@ -45,6 +70,7 @@ function SingleBeer({ beer }) {
             <article>
                 <img src={beer.image} alt={beer.name} />
             </article>
+            <BeerRating rating={beer.rating} />
         </BeerStyles>
     )
 }
@@ -53,7 +79,7 @@ export default function BeerList({ beers }) {
     return (
         <>
             <BeerGridStyles>
-                {beers.map((beer, index) => {
+                {beers.map((beer) => {
                     return <SingleBeer key={beer.id} beer={beer} />
                 })}
             </BeerGridStyles>
