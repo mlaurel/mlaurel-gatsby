@@ -44,7 +44,7 @@ const RatingStyles = styled.div`
 `
 
 function BeerRating({ rating }) {
-    console.log({ rating })
+    // console.log({ rating })
     const stars = Math.round(rating.average)
 
     return (
