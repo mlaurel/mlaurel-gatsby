@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const FooterStyle = styled.div`
+    margin: 6rem auto 4rem;
     text-align: center;
 `
 

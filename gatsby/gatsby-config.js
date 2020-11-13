@@ -1,16 +1,17 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
-dotenv.config({ path: '.env' });
+dotenv.config({ path: '.env' })
 
 export default {
     pathPrefix: '/pizza',
     siteMetadata: {
-        title: `Slicks Slices`,
+        title: `Mikey Slices`,
         siteUrl: 'https://gatsby.pizza',
-        description: 'The best pizza place in Hamilton!',
-        twitter: '@slicksSlices',
+        description: 'The best pizza in San Diego!',
+        twitter: '@mlaurel',
     },
     plugins: [
+        'gatsby-plugin-react-helmet',
         'gatsby-plugin-styled-components',
         {
             // this is the name of the plugin you are adding
@@ -23,4 +24,4 @@ export default {
             },
         },
     ],
-};
+}

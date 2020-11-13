@@ -98,8 +98,6 @@ async function fetchBeersAndTurnIntoNodes({
 }
 
 async function turnSlicemastersIntoPages({ graphql, actions }) {
-    const slicemasterTemplate = path.resolve('./src/templates/Slicemaster.js')
-
     // 1. query all slicemasters
     const { data } = await graphql(`
         query {
@@ -121,7 +119,7 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
         // console.log(`******* create slicemaster page at ${person.slug.current}`)
         actions.createPage({
             path: `slicemaster/${person.slug.current}`,
-            component: slicemasterTemplate,
+            component: path.resolve('./src/templates/Slicemaster.js'),
             context: {
                 slug: person.slug.current,
             },

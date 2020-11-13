@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import BeerList from '../components/BeerList'
 import styled from 'styled-components'
+import SEO from '../components/SEO'
 
 const BeerTitle = styled.h1`
     text-align: center;
@@ -16,6 +17,7 @@ export default function BeersPage({ data }) {
 
     return (
         <>
+            <SEO title={`We have ${data.beers.nodes.length}`} />
             <BeerTitle>
                 <span>Holy Smokes!</span> We have {beers.length} total beers
             </BeerTitle>

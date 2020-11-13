@@ -2,8 +2,9 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import SEO from '../components/SEO'
 
-const SlicemasterGrid = styled.div`
+const SliceMasterGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 2rem;
@@ -17,14 +18,20 @@ const SlicemasterGrid = styled.div`
 
 export default function SingleSlicemasterPage({ data: { slicemaster } }) {
     return (
-        <SlicemasterGrid>
-            <Img fluid={slicemaster.image.asset.fluid} alt={slicemaster.name} />
-            <div>
-                <h2 className="mark">{slicemaster.name}</h2>
-                <p>{slicemaster.description}</p>
-                <Link to="/slicemasters"> &#8592; Back to Slicemasters</Link>
-            </div>
-        </SlicemasterGrid>
+        <>
+            <SEO title={`SliceMaster ${slicemaster.name}`} />
+            <SliceMasterGrid>
+                <Img
+                    fluid={slicemaster.image.asset.fluid}
+                    alt={slicemaster.name}
+                />
+                <article>
+                    <h2 className="mark">{slicemaster.name}</h2>
+                    <p>{slicemaster.description}</p>
+                    <Link to="/slicemasters"> Back to Slicemasters</Link>
+                </article>
+            </SliceMasterGrid>
+        </>
     )
 }
 
@@ -37,7 +44,7 @@ export const query = graphql`
             description
             image {
                 asset {
-                    fluid(maxWidth: 800) {
+                    fluid(maxWidth: 1000, maxHeight: 750) {
                         ...GatsbySanityImageFluid
                     }
                 }

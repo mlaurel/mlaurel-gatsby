@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import PizzaList from '../components/PizzaList'
 import styled from 'styled-components'
 import ToppingsFilter from '../components/ToppingsFilter'
+import SEO from '../components/SEO'
 
 const PizzaHeader = styled.div`
     display: flex;
@@ -17,6 +18,13 @@ export default function PizzasPage({ data, pageContext }) {
 
     return (
         <>
+            <SEO
+                title={
+                    pageContext.topping
+                        ? `Pizzas with ${pageContext.topping}`
+                        : `All Pizzas`
+                }
+            />
             <PizzaHeader>
                 {toppingTitle ? (
                     <h1>{pageContext.topping}</h1>
