@@ -2,26 +2,32 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import useForm from '../utils/useForm'
 import SEO from '../components/SEO'
-import styled from 'styled-components'
 import Img from 'gatsby-image'
 import calculatePizzaPrice from '../utils/calculatePizzaPrice'
 import formatMoney from '../utils/formatMoney'
+import usePizza from '../utils/usePizza'
 import {
     OrderForm,
     MenuGrid,
     PriceGrid,
     ButtonGrid,
 } from '../styles/OrderStyles'
+import PizzaOrder from '../components/PizzaOrder'
 
 export default function OrderPage({ data }) {
+    const pizzas = data.pizzas.nodes
+    // console.log(pizzas)
+
     const { values, updateValue } = useForm({
         name: '',
         email: '',
     })
-
     // console.log(values, updateValue)
-    const pizzas = data.pizzas.nodes
-    console.log(pizzas)
+
+    const { order, addToOrder, removeFromOrder } = usePizza({
+        pizzas,
+        inputs: values,
+    })
 
     return (
         <>
@@ -58,7 +64,16 @@ export default function OrderPage({ data }) {
                                 <h2>{pizza.name}</h2>
                                 <ButtonGrid>
                                     {['S', 'M', 'L'].map((size, index) => (
-                                        <button key={index} type="button">
+                                        <button
+                                            key={index}
+                                            type="button"
+                                            onClick={() => {
+                                                addToOrder({
+                                                    id: pizza.id,
+                                                    size: size,
+                                                })
+                                            }}
+                                        >
                                             {size} &nbsp;
                                             {formatMoney(
                                                 calculatePizzaPrice(
@@ -74,7 +89,12 @@ export default function OrderPage({ data }) {
                     ))}
                 </fieldset>
                 <fieldset>
-                    <legend>Order</legend>
+                    <legend>Menu</legend>
+                    <PizzaOrder
+                        order={order}
+                        pizzas={pizzas}
+                        removeFromOrder={removeFromOrder}
+                    />
                 </fieldset>
             </OrderForm>
         </>
