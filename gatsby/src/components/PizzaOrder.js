@@ -10,11 +10,16 @@ const OrderGrid = styled.div`
     grid-gap: 1rem;
     margin-bottom: 2rem;
 
-    img {
-    }
-    button {
-        border-radius: 8px;
-        font-size: 1.75rem;
+    .order-details {
+        p {
+            display: grid;
+            grid-template-columns: 1fr 65px;
+        }
+        button {
+            text-align: center;
+            font-size: 1.25rem;
+            border-radius: 8px;
+        }
     }
 `
 
@@ -29,7 +34,7 @@ export default function PizzaOrder({ order, pizzas, removeFromOrder }) {
                 return (
                     <OrderGrid key={singleOrder.id}>
                         <Img fluid={pizza.image.asset.fluid}></Img>
-                        <div>
+                        <div className="order-details">
                             <h2>{pizza.name}</h2>
                             <p>
                                 {formatMoney(
@@ -39,15 +44,15 @@ export default function PizzaOrder({ order, pizzas, removeFromOrder }) {
                                     )
                                 )}{' '}
                                 ({singleOrder.size})
+                                <button
+                                    type="button"
+                                    className="remove"
+                                    title={`Remove ${singleOrder.size} from Order`}
+                                    onClick={() => removeFromOrder(index)}
+                                >
+                                    Remove
+                                </button>
                             </p>
-                            <button
-                                type="button"
-                                className="remove"
-                                title={`Remove ${singleOrder.size} from Order`}
-                                onClick={() => removeFromOrder(index)}
-                            >
-                                Remove
-                            </button>
                         </div>
                     </OrderGrid>
                 )
