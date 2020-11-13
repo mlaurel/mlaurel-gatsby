@@ -49,7 +49,7 @@ export default function Nav() {
         <NavStyles>
             <ul>
                 <li>
-                    <Link to="/order">Hot Now</Link>
+                    <Link to="/order">Order Now</Link>
                 </li>
                 <li>
                     <Link to="/pizzas">Pizza Menu</Link>

@@ -16,6 +16,12 @@ const SliceMasterGrid = styled.div`
     }
 `
 
+const BackButton = styled.button`
+    background-color: var(--yellow);
+    color: #222;
+    border-radius: 8px;
+`
+
 export default function SingleSlicemasterPage({ data: { slicemaster } }) {
     return (
         <>
@@ -28,7 +34,9 @@ export default function SingleSlicemasterPage({ data: { slicemaster } }) {
                 <article>
                     <h2 className="mark">{slicemaster.name}</h2>
                     <p>{slicemaster.description}</p>
-                    <Link to="/slicemasters"> Back to Slicemasters</Link>
+                    <Link to="/slicemasters">
+                        <BackButton>Back to Slicemasters</BackButton>
+                    </Link>
                 </article>
             </SliceMasterGrid>
         </>

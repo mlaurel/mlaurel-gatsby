@@ -13,6 +13,7 @@ import {
     ButtonGrid,
 } from '../styles/OrderStyles'
 import PizzaOrder from '../components/PizzaOrder'
+import calculateOrderTotal from '../utils/calculateOrderTotal'
 
 export default function OrderPage({ data }) {
     const pizzas = data.pizzas.nodes
@@ -52,41 +53,44 @@ export default function OrderPage({ data }) {
                         onChange={updateValue}
                     />
                 </fieldset>
-                <fieldset>
+                <fieldset className="menu-group">
                     <legend>Menu</legend>
-                    {pizzas.map((pizza) => (
-                        <MenuGrid key={pizza.id}>
-                            <Img
-                                fluid={pizza.image.asset.fluid}
-                                alt={pizza.name}
-                            />
-                            <PriceGrid>
-                                <h2>{pizza.name}</h2>
-                                <ButtonGrid>
-                                    {['S', 'M', 'L'].map((size, index) => (
-                                        <button
-                                            key={index}
-                                            type="button"
-                                            onClick={() => {
-                                                addToOrder({
-                                                    id: pizza.id,
-                                                    size: size,
-                                                })
-                                            }}
-                                        >
-                                            {size} &nbsp;
-                                            {formatMoney(
-                                                calculatePizzaPrice(
-                                                    pizza.price,
-                                                    size
-                                                )
-                                            )}
-                                        </button>
-                                    ))}
-                                </ButtonGrid>
-                            </PriceGrid>
-                        </MenuGrid>
-                    ))}
+                    {pizzas.map((pizza) => {
+                        //  console.log(pizza.id)
+                        return (
+                            <MenuGrid key={pizza.id}>
+                                <Img
+                                    fluid={pizza.image.asset.fluid}
+                                    alt={pizza.name}
+                                />
+                                <PriceGrid>
+                                    <h2>{pizza.name}</h2>
+                                    <ButtonGrid>
+                                        {['S', 'M', 'L'].map((size) => (
+                                            <button
+                                                type="button"
+                                                key={size}
+                                                onClick={() => {
+                                                    addToOrder({
+                                                        id: pizza.id,
+                                                        size: size,
+                                                    })
+                                                }}
+                                            >
+                                                {size} &nbsp;
+                                                {formatMoney(
+                                                    calculatePizzaPrice(
+                                                        pizza.price,
+                                                        size
+                                                    )
+                                                )}
+                                            </button>
+                                        ))}
+                                    </ButtonGrid>
+                                </PriceGrid>
+                            </MenuGrid>
+                        )
+                    })}
                 </fieldset>
                 <fieldset>
                     <legend>Menu</legend>
@@ -95,6 +99,13 @@ export default function OrderPage({ data }) {
                         pizzas={pizzas}
                         removeFromOrder={removeFromOrder}
                     />
+                </fieldset>
+                <fieldset>
+                    <h3>
+                        Your Total is{' '}
+                        {formatMoney(calculateOrderTotal(order, pizzas))}
+                    </h3>
+                    <button type="submit">Order Ahead</button>
                 </fieldset>
             </OrderForm>
         </>

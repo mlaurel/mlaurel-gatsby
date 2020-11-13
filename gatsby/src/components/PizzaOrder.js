@@ -32,7 +32,7 @@ export default function PizzaOrder({ order, pizzas, removeFromOrder }) {
                     (pizza) => pizza.id === singleOrder.id
                 )
                 return (
-                    <OrderGrid key={singleOrder.id}>
+                    <OrderGrid key={`${singleOrder.id}-${index}`}>
                         <Img fluid={pizza.image.asset.fluid}></Img>
                         <div className="order-details">
                             <h2>{pizza.name}</h2>

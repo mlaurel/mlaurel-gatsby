@@ -10,13 +10,17 @@ export const OrderForm = styled.form`
     legend {
         font-size: 1.25rem;
     }
-    fieldset:first-child {
+    fieldset:first-child,
+    fieldset:last-child {
         grid-column: 1 / -1;
         display: grid;
         grid-template-columns: 1fr;
         grid-gap: 1rem;
     }
-    fieldset {
+    fieldset.menu-group {
+        max-height: 60vh;
+        overflow: scroll;
+        scroll-behavior: scrollbars;
     }
 `
 
