@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import Pagination from '../components/Pagination'
 
 const SlicemasterGrid = styled.ul`
     display: grid;
@@ -38,12 +39,21 @@ const SlicemasterStyle = styled.li`
     }
 `
 
-export default function SliceMastersPage({ data }) {
+export default function SliceMastersPage({ data, pageContext }) {
     const slicemasters = data.slicemasters.nodes
-    // console.log(slicemasters)
+    const totalCount = data.slicemasters.totalCount
+    // NOTE:  totalCount is not on nodes...
+    //             so either create a new variable or define totalCount below
 
     return (
         <>
+            <Pagination
+                pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
+                totalCount={totalCount}
+                currentPage={pageContext.currentPage || 1}
+                skip={pageContext.skip}
+                base={'/slicemasters'}
+            />
             <SlicemasterGrid>
                 {slicemasters.map((person) => {
                     return (
@@ -69,8 +79,8 @@ export default function SliceMastersPage({ data }) {
 }
 
 export const query = graphql`
-    query SlicemasterQuery {
-        slicemasters: allSanityPerson {
+    query Slicemasters($skip: Int = 0, $pageSize: Int = 4) {
+        slicemasters: allSanityPerson(limit: $pageSize, skip: $skip) {
             nodes {
                 name
                 id

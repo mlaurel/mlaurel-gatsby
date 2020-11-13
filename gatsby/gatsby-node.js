@@ -98,6 +98,8 @@ async function fetchBeersAndTurnIntoNodes({
 }
 
 async function turnSlicemastersIntoPages({ graphql, actions }) {
+    const slicemasterTemplate = path.resolve('./src/templates/Slicemaster.js')
+
     // 1. query all slicemasters
     const { data } = await graphql(`
         query {
@@ -113,7 +115,18 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
             }
         }
     `)
-    // 2. TODO:  turn each slicemaster into their own page
+    // 2. turn each slicemaster into their own page
+
+    data.slicemasters.nodes.forEach((person) => {
+        // console.log(`******* create slicemaster page at ${person.slug.current}`)
+        actions.createPage({
+            path: `slicemaster/${person.slug.current}`,
+            component: slicemasterTemplate,
+            context: {
+                slug: person.slug.current,
+            },
+        })
+    })
 
     // 3. figure out how many pages there are based on how many slicemasters there are, and how many per page
     const slicedogs = data.slicemasters.totalCount
@@ -123,7 +136,6 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
 
     // 4. loop from 1 to n and create the pages for them
     Array.from({ length: pageCount }).forEach((_, index) => {
-        console.log(`**************  creating page ${index}`)
         actions.createPage({
             path: `/slicemasters/${index + 1}`,
             component: path.resolve('./src/pages/slicemasters.js'),
