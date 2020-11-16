@@ -22,6 +22,11 @@ export const OrderForm = styled.form`
         overflow: scroll;
         scroll-behavior: scrollbars;
     }
+    .mapleSyrup {
+        display: none;
+        z-index: -999;
+        margin-top: -999px;
+    }
 `
 
 export const MenuGrid = styled.div`

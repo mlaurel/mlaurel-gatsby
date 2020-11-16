@@ -46,7 +46,7 @@ export default function OrderPage({ data }) {
         <>
             <SEO title="Order a Pizza" />
             <OrderForm onSubmit={submitOrder}>
-                <fieldset>
+                <fieldset disabled={loading}>
                     <legend>Your Info</legend>
                     <label htmlFor="name">Name</label>
                     <input
@@ -64,8 +64,16 @@ export default function OrderPage({ data }) {
                         value={values.email}
                         onChange={updateValue}
                     />
+                    <input
+                        type="text"
+                        name="mapleSyrup"
+                        id="mapleSyrup"
+                        value={values.mapleSyrup}
+                        onChange={updateValue}
+                        className="mapleSyrup"
+                    />
                 </fieldset>
-                <fieldset className="menu-group">
+                <fieldset disabled={loading} className="menu-group">
                     <legend>Menu</legend>
                     {pizzas.map((pizza) => {
                         //  console.log(pizza.id)
@@ -104,7 +112,7 @@ export default function OrderPage({ data }) {
                         )
                     })}
                 </fieldset>
-                <fieldset>
+                <fieldset disabled={loading}>
                     <legend>Order</legend>
                     <PizzaOrder
                         order={order}
@@ -112,7 +120,7 @@ export default function OrderPage({ data }) {
                         removeFromOrder={removeFromOrder}
                     />
                 </fieldset>
-                <fieldset>
+                <fieldset disabled={loading}>
                     <legend>Order Total</legend>
                     <h3>
                         <span>Your Total is: </span>
