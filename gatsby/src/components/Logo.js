@@ -43,7 +43,7 @@ const LogoStyles = styled.div`
         transform: translateY(-0.15em);
     }
     .slicks {
-        transform: scale(1.4);
+        transform: scale(1.1) translateY(1.1em);
         display: block;
         text-shadow: 0.18em 0.18em 0 rgba(0, 0, 0, 0.05);
         perspective: 100px;
@@ -54,7 +54,7 @@ const LogoStyles = styled.div`
         --scale: 1;
         --rotate: -10deg;
         --translateX: 0;
-        --translateY: 0;
+        --translateY: -1.1em;
         --rotateX: 0deg;
         transform: scale(var(--scale)) rotate(var(--rotate))
             translateX(var(--translateX)) translateY(var(--translateY))
@@ -62,33 +62,34 @@ const LogoStyles = styled.div`
         display: inline-block;
         line-height: 1;
         transition: transform 0.3s;
-        &.S {
+        &.M {
             --translateX: -0.05;
         }
-        &.l {
+        &.I {
             --rotate: 2deg;
-            --scale: 1.4;
+            --scale: 0.9;
             --translateX: 0.05em;
-            --translateY: -0.05em;
+            --translateY: -0em;
         }
-        &.i {
+        &.K {
             --scale: 0.9;
             --translateY: -0.1em;
             --translateX: 0.1em;
         }
-        &.c {
+        &.E {
             --rotate: 3deg;
             --scale: 0.9;
             --translateX: 0.1em;
-            --translateY: 0.23em;
+            --translateY: -0.13em;
         }
-        &.k {
+        &.Y {
             --rotate: -12deg;
             --scale: 1.2;
             --translateX: 0.06em;
         }
         &.apos {
-            --translateX: 0.1em;
+            --translateX: 0.2em;
+            --translateY: -0.15em;
         }
         &.s {
             --rotate: 12deg;
@@ -105,11 +106,11 @@ export default function Logo() {
                 <span className="est">EST 1994</span>
                 <h1>
                     <span className="slicks">
-                        <span className="letter S">S</span>
-                        <span className="letter l">l</span>
-                        <span className="letter i">i</span>
-                        <span className="letter c">c</span>
-                        <span className="letter k">k</span>
+                        <span className="letter M">M</span>
+                        <span className="letter I">I</span>
+                        <span className="letter K">K</span>
+                        <span className="letter E">E</span>
+                        {/* <span className="letter Y">Y</span> */}
                         <span className="letter apos">'</span>
                         <span className="letter s">s</span>
                     </span>
