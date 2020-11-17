@@ -41,6 +41,26 @@ const NavStyles = styled.nav`
             color: var(--red);
             /* transform: rotate(5deg); */
         }
+        @media (max-width: 1024px) {
+            font-size: 2.5rem;
+        }
+    }
+    @media (max-width: 865px) {
+        --columns: 4;
+        margin-bottom: 4rem;
+        ul {
+            grid-template-rows: auto auto;
+            grid-template-columns: repeat(var(--columns), 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .logo-item {
+            order: 0;
+            grid-column: 1 / -1;
+        }
+    }
+    @media (max-width: 500px) {
+        --columns: 2;
     }
 `
 
@@ -54,16 +74,16 @@ export default function Nav() {
                 <li>
                     <Link to="/pizzas">Pizza Menu</Link>
                 </li>
-                <li>
+                <li className="logo-item">
                     <Link to="/">
                         <Logo />
                     </Link>
                 </li>
                 <li>
-                    <Link to="/beers">Beers</Link>
+                    <Link to="/beers">Beer Menu</Link>
                 </li>
                 <li>
-                    <Link to="/slicemasters">SliceMasters</Link>
+                    <Link to="/slicemasters">Slice Masters</Link>
                 </li>
             </ul>
         </NavStyles>

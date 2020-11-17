@@ -9,7 +9,7 @@ const PagingStyle = styled.div`
     justify-content: center;
     border: 1px solid var(--grey);
     text-align: center;
-    margin: 1rem auto;
+    margin: 1rem auto 5rem;
 
     & > * {
         padding: 1rem;
@@ -50,7 +50,7 @@ export default function Pagination({
             </Link>
             {Array.from({ length: totalPages }).map((_, index) => {
                 return (
-                    <Link key={index} to={`${base}/${index + 1}`}>
+                    <Link key={`loading-${index}`} to={`${base}/${index + 1}`}>
                         {index + 1}
                     </Link>
                 )
