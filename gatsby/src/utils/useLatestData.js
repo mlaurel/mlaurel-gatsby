@@ -48,7 +48,7 @@ export default function useLatestData() {
         })
             .then((res) => res.json())
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 // TODO: check for errors
                 // set the data to state
                 setHotSlices(res.data.StoreSettings.hotSlices)

@@ -6,7 +6,7 @@ export default {
     pathPrefix: '/pizza',
     siteMetadata: {
         title: `Mikey Slices`,
-        siteUrl: 'https://gatsby.pizza',
+        siteUrl: 'https://mlaurel-pizza.netlify.app',
         description: 'The best pizza in San Diego!',
         twitter: '@mlaurel',
     },
