@@ -4,11 +4,13 @@ import styled from 'styled-components'
 //  A better way would be to export one pageStyle with nested selectors
 
 export const OrderForm = styled.form`
+    --columns: 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(var(--columns), 1fr);
     grid-gap: 1rem;
     legend {
         font-size: 1.25rem;
+        width: fit-content;
     }
     fieldset:first-child,
     fieldset:last-child {
@@ -26,6 +28,9 @@ export const OrderForm = styled.form`
         display: none;
         z-index: -999;
         margin-top: -999px;
+    }
+    @media (max-width: 800px) {
+        --columns: 1;
     }
 `
 

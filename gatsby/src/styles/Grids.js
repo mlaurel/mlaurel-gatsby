@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 
 export const HomePageGrid = styled.div`
+    --columns: 2;
     display: grid;
-    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
     gap: 2rem;
+
+    @media (max-width: 800px) {
+        --columns: 1;
+    }
 `
 
 export const ItemsGrid = styled.div`
@@ -51,6 +56,8 @@ export const ItemStyles = styled.div`
         width: 100%;
         left: 0;
         margin-top: -5px;
+        font-size: 2rem;
+        font-size: clamp(12px, 5vw, 20px);
     }
     .mark {
     }
