@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import ReactImageFallback from 'react-image-Fallback'
 import FallbackImage from '../assets/images/beer-default.png'
 
 const BeerGridStyles = styled.ul`
@@ -72,11 +71,7 @@ function SingleBeer({ beer }) {
                 Price: <span>{beer.price}</span>
             </strong>
             <article>
-                <ReactImageFallback
-                    src={beer.image}
-                    fallbackImage={FallbackImage}
-                    alt={beer.name}
-                />
+                <img src={beer.image} alt={beer.name} />
             </article>
             <BeerRating rating={beer.rating} />
         </BeerStyles>
