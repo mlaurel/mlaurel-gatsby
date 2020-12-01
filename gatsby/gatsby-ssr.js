@@ -9,8 +9,8 @@ export function wrapRootElement({ element }) {
     return <OrderProvider>{element}</OrderProvider>
 }
 
-export const onRenderBody = ({ setHeadComponents }) => {
-    setHeadComponents([
+export const onRenderBody = ({ setPostBodyComponents }) => {
+    setPostBodyComponents([
         <script crossorigin src="https://unpkg.com/@daily-co/daily-js" />,
         <script
             key="daily_chat"
