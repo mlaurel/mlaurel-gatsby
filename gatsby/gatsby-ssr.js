@@ -9,17 +9,17 @@ export function wrapRootElement({ element }) {
     return <OrderProvider>{element}</OrderProvider>
 }
 
-export const onRenderBody = ({ setPostBodyComponents }) => {
-    setPostBodyComponents([
-        <script crossorigin src="https://unpkg.com/@daily-co/daily-js" />,
-        <script
-            key="daily_chat"
-            dangerouslySetInnerHTML={{
-                __html: `
-            allFrame = window.DailyIframe.createFrame();
-            callFrame.join({ url: 'https://mdog.daily.co/hello-daily' });
-            `,
-            }}
-        />,
-    ])
-}
+// export const onRenderBody = ({ setPostBodyComponents }) => {
+//     setPostBodyComponents([
+//         <script crossorigin src="https://unpkg.com/@daily-co/daily-js" />,
+//         <script
+//             key="daily_chat"
+//             dangerouslySetInnerHTML={{
+//                 __html: `
+//             allFrame = window.DailyIframe.createFrame();
+//             callFrame.join({ url: 'https://mdog.daily.co/hello-daily' });
+//             `,
+//             }}
+//         />,
+//     ])
+// }
